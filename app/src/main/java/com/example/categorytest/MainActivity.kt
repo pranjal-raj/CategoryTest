@@ -47,11 +47,11 @@ class MainActivity : AppCompatActivity() {
        // var list : ArrayList<Category> = ArrayList()
         val retrofitservice = apiController.retrofit.create(apiService::class.java)
         val retrofitData = retrofitservice.getCategories()
-         retrofitData.enqueue(object : Callback<ArrayList<CategoryListItem>>{
+         retrofitData.enqueue(object : Callback<ArrayList<Any>>{
 
              override fun onResponse(
-                 call: Call<ArrayList<CategoryListItem>>,
-                 response: retrofit2.Response<ArrayList<CategoryListItem>>
+                 call: Call<ArrayList<Any>>,
+                 response: retrofit2.Response<ArrayList<Any>>
              ) {
                //  list = response.body()!!
                  Log.d("jhoom", "${response.code()}")
@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                  binding.tv.text = response.body().toString()
              }
 
-             override fun onFailure(call: Call<ArrayList<CategoryListItem>>, t: Throwable) {
+             override fun onFailure(call: Call<ArrayList<Any>>, t: Throwable) {
                  Log.d("jhoom", "Failed ${t.message}")
              }
          })
